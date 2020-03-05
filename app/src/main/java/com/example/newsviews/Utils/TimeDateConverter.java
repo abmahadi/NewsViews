@@ -11,7 +11,7 @@ public class TimeDateConverter {
 
     public static String getCountry(){
         Locale locale = Locale.getDefault();
-        String country = String.valueOf(locale.getCountry());
+        String country = locale.getCountry();
         return country.toLowerCase();
     }
     public static String DateFormat(String oldstringDate){

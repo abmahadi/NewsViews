@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView newsRV;
     private NewsAdapter newsAdapter;
 
+    private SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         swipeRefreshLayoutMain.setOnRefreshListener(this);
         getHeadLines();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+                Toast.makeText(MainActivity.this, "Search work", Toast.LENGTH_SHORT).show();
+
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+
+                return false;
+            }
+        });
     }
 
     private void getHeadLines() {
@@ -134,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar =findViewById(R.id.toolbar);
         swipeRefreshLayoutMain = findViewById(R.id.swaipe_layout);
         newsRV = findViewById(R.id.mainActivity_RV);
+
+        searchView = findViewById(R.id.number_SV);
 
     }
 

@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="mainColor">#492020</color>
     <color name="splash_screen_background">#70E8F7</color>
+    <color name="searchBackground">#CAC6C6</color>
 </resources>

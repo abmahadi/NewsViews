@@ -24,7 +24,18 @@
         android:elevation="4dp">
 
 
+        <SearchView
+            android:id="@+id/number_SV"
+            android:gravity="center"
+            android:queryBackground="@color/searchBackground"
+            android:inputType="number"
+            android:queryHint="Enter Number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></SearchView>
+
+
     </androidx.appcompat.widget.Toolbar>
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swaipe_layout"

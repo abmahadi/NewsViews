@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/splash_screen_background"
+    tools:context=".NumberSearchResultActivity">
+
+    <ImageView
+        android:id="@+id/nsr_back_IV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back"
+        android:padding="10dp"
+        android:onClick="back"></ImageView>
+
+    <TextView
+        android:layout_below="@+id/nsr_back_IV"
+        android:layout_margin="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/numberSearchResult_TV"
+        android:maxLines="100"
+        android:text="Result"
+        android:textAllCaps="false"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/mainColor"
+        android:gravity="center|center_horizontal|center_vertical" />
+
+
+</RelativeLayout>

@@ -27,11 +27,14 @@ import com.example.newsviews.Model.HeadLine;
 import com.example.newsviews.Utils.NetworkService;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.IOException;
+
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
     private DrawerLayout drawerLayout;
@@ -64,7 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public boolean onQueryTextSubmit(String s) {
 
-                Toast.makeText(MainActivity.this, "Search work", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(MainActivity.this, "Search work", Toast.LENGTH_SHORT).show();
+
+                getNumberString(s);
 
 
                 return true;
@@ -77,6 +82,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return false;
             }
         });
+    }
+
+    private void getNumberString(String s) {
+
+
+        NetworkService networkService = new NetworkService();
+        networkService.NetworkServiceNumber();
+
+        networkService.NetworkServiceNumber()
+                .GetTrivialString(s)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+
+                        String data = null;
+                        try {
+                            data = responseBody.string();
+                        } catch (IOException e) {
+                            Toast.makeText(MainActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        startActivity(new Intent(getApplicationContext(), NumberSearchResultActivity.class).putExtra("NumberResult", data));
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Toast.makeText(MainActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
     }
 
     private void getHeadLines() {
